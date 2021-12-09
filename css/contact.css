@@ -1,0 +1,7 @@
+.contact h1{
+    text-align: center;
+    font-weight: 600;
+    color: var(--mainColor);
+    font-size: 40px;
+    margin-top: 50px;
+}
