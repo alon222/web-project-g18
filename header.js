@@ -51,8 +51,13 @@ function myFunction() {
         // Attach the handler
         ele.addEventListener('mousedown', mouseDownHandler);
      });
+     
     //   popup trigger
 
     function openModal(){
+      console.log("asda")
+    }
+
+    function additem(){
       console.log("asda")
     }

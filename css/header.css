@@ -10,7 +10,6 @@ body {
   .topnav {
     overflow: hidden;
     background-color: #333;
-    padding-right: 40px;
   }
   
   .topnav a {
@@ -37,8 +36,10 @@ body {
     display: none;
   }
   
-  @media screen and (max-width: 600px) {
-    .topnav a {display: none;}
+  @media screen and (max-width: 700px) {
+    .topnav a {
+      display: none;
+    }
     .topnav a.icon {
       float: right;
       display: block;
@@ -46,7 +47,9 @@ body {
   }
   
   @media screen and (max-width: 600px) {
-    .topnav.responsive {position: relative;}
+    .topnav.responsive {
+      position: relative;
+    }
     .topnav.responsive .icon {
       position: absolute;
       right: 0;
@@ -70,3 +73,4 @@ body {
     font-size: 40px;
     font-weight: 400;
 }
+

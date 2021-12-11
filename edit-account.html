@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="form.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="form.css">
     <script src="header.js"></script> <!-- call to js file -->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
-    <title>ContactAs</title>
 </head>
 <body>
     <header>
         <nav>
             <div class="topnav" id="myTopnav">
                 <div class="logo">Trom<span>Oti</span></div>
-                <a href="contact.html" class="active">ContactAs</a>
-                <a href="my-account.html">My Account</a>
+                <a href="contact.html">ContactAs</a>
+                <a href="my-account.html" class="active">My Account</a>
                 <a href="#SignUp" onclick="openModal()">SignUp</a>
-                <a href="about.html">About</a>
+                <a href="about.html" >About</a>
                 <a href="index.html">Home</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
                 <link rel="stylesheet" href="item.css">
@@ -29,33 +29,43 @@
     </header>
     <main>
         <div class="page">
-            <h1>Contact As</h1>
-        </div>
+            <h1>Edit Your Account</h1>
+        </div>       
         <div class="login-wrap">
-            <div class="login-html">
+            <div class="login-html">    
               <div class="login-form">
-                <div class="sign-in-htm">         
-                  <div class="group">
-                    <label for="Email" class="label">Your email address</label>
-                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required>
+                    <div class="group">
+                    <label for="user_signup" class="label">Username</label>
+                    <input id="user_signup" type="text" class="input" required value="username">
+                    <span id = "username_mes" class="messages"></span> 
                   </div>
                   <div class="group">
-                    <label for="subject" class="label">Subject</label>
-                    <input id="subject" type="text" class="input" required>
+                    <label for="Email" class="label">Email Address</label>
+                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="example@example.com">
+                    <span id = "email_mes" class="messages"></span> 
                   </div>
                   <div class="group">
-                    <label for="description" class="label">Description</label>
-                    <textarea id="description" cols ="30" rows="10" class="input" required></textarea> <br><br>
-                    <h3>Please enter the details of your request.</h3>
-                    <h3>A member of our support staff will respond as soon as possible.</h3>
+                    <label for="phone" class="label">Phone Number</label>
+                    <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="0500000000"> 
+                    <span id = "phone_mes" class="messages" ></span> 
+                  </div> 
+                  <div class="group">
+                    <label for="password_signup" class="label">Password</label>
+                    <input id="password_signup" name="password" type="password" minlength="8" maxlength="15" class="input" required value="********">
+                    <div class="eye_icon"><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
+                    <span id = "password_mes" class="messages"></span> 
                   </div>
                   <div class="group">
-                    <input type="submit" class="button" value="Submit" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_contactus()">
+                    <label for="repass_signup" class="label">Confirm Password</label>
+                    <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
+                    <span id = "repass_mes" class="messages"> </span> 
+                  </div>
+                  <div class="group">
+                    <input type="submit" class="button" value="Update" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
                   </div>
                 </div>
               </div>
             </div>
-          </div>
     </main>
     <footer>
         <div class="footer-content">
@@ -81,4 +91,3 @@
     </footer>
 </body>
 </html>
-<script src="signin.js"></script> <!--link to the js file-->
