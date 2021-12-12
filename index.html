@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="css/style.css"> <!-- page styles -->
     <link rel="stylesheet" href="css/header.css"> <!-- header styles -->
     <link rel="stylesheet" href="css/footer.css"> <!-- footer styles -->
     <link rel="stylesheet" href="css/signin.css"><!--styles for login popup-->
-    <link rel="stylesheet" href="form.css"><!--styles for additem popup-->
+    <link rel="stylesheet" href="css/form.css"><!--styles for additem popup-->
+    <link rel="stylesheet" href="css/item.css"><!--styles for card component-->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
-    <script src="header.js"></script> <!-- call to js file -->
+    <script src="js/header.js"></script> <!-- call to js file -->
 </head>
 <body>
     <header>
@@ -24,7 +25,6 @@
                 <a href="about.html">About</a>
                 <a href="index.html"class="active" >Home</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
-                <link rel="stylesheet" href="item.css">
             </div>
         </nav>
     </header>
@@ -41,74 +41,51 @@
             </div>
         </div>
         <h1 id="title">Check out our list of donation items</h1>
-        <!-- foo products template slider-->
+        <!--  products template slider-->
         <div class="container">
             <h2>Food Products</h2>
             <div class="slider">
-                <div class="wrapper" id="wrapper">
-                    <div class="item"> 
-                        <!-- first item -->
-                        <div class="cardContainer inactive">
-                            <div class="card">
-                              <div class="side front">
-                                <div class="img img1"></div>
-                                <div class="info">
-                                  <h2>Super Z HyperDrive</h2>
-                                  <p>A high-performance zero-turn with unsurpassed strength, speed &amp; reliability with a warranty to match.</p>
-                                </div>
-                              </div>
-                              <div class="side back">
-                                <div class="info">
-                                  <h2>At a glance</h2>
-                                  <ul>
-                                    <li>Your choice of VX4 decks ranging from 60 to 72 inches</li>
-                                    <li>The 37hp Vanguard BigBlock EFI makes short work out of big jobs enabling speeds up to 16mph</li>
-                                    <li>Massive 24" drive tires and 13" front caster tires</li>
-                                  </ul>
+                <div class="wrapper" id="wrapper1">
+                    <div class="item"><!-- first item -->
+                      <div class="cardContainer inactive">
+                        <div class="card">
+                          <div class="side front">
+                            <div class="img img1"></div>
+                            <div class="info">
+                              <h2>Tomato</h2>
+                              <p>Pronto restaurant offers 2 kg of tomatoes for delivery</p>
+                            </div>
+                          </div>
+                          <div class="side back">
+                            <div class="info">
+                              <h2>Vegtables</h2>
+                              <h3>Tomato, 2kg</h3>
+                              <ul>
+                                <li><i class="far fa-clock"></i>  Until: may 13 ,20:00</li>
+                                <li><i class="fas fa-barcode"></i>  Category: Food</li>
+                                <li><i class="fas fa-map-marked-alt"></i>  Rabi Akiva 6, Beer-Sheva</li>
+                              </ul>
+                              <h5>*Order to get donor details for coordination</h5>
+                              <a href="order.html">
                                   <div class="btn">
                                     <h4>Request this product</h4>
                                     <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>
-                                  </div>
                                 </div>
-                              </div>
+                              </a>
                             </div>
                           </div>
+                        </div>
+                      </div>
                     </div>
-                    <!-- secound item -->
-                    <div class="item">
-                        <div class="cardContainer inactive">
-                            <div class="card">
-                              <div class="side front">
-                                <div class="img img1"></div>
-                                <div class="info">
-                                  <h2>Super Z HyperDrive</h2>
-                                  <p>A high-performance zero-turn with unsurpassed strength, speed &amp; reliability with a warranty to match.</p>
-                                </div>
-                              </div>
-                              <div class="side back">
-                                <div class="info">
-                                  <h2>At a glance</h2>
-                                  <ul>
-                                    <li>Your choice of VX4 decks ranging from 60 to 72 inches</li>
-                                    <li>The 37hp Vanguard BigBlock EFI makes short work out of big jobs enabling speeds up to 16mph</li>
-                                    <li>Massive 24" drive tires and 13" front caster tires</li>
-                                  </ul>
-                                  <div class="btn">
-                                    <h4>Request this product</h4>
-                                    <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                    <div class="item"><!-- secound item -->
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Third item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fourth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fifth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
                 </div>
@@ -118,20 +95,20 @@
         <div class="container">
             <h2>Home Products</h2>
             <div class="slider">
-                <div class="wrapper" id="wrapper">
-                    <div class="item">
+                <div class="wrapper" id="wrapper2">
+                    <div class="item"><!-- first item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- secound item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Third item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fourth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fifth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
                 </div>
@@ -141,20 +118,20 @@
         <div class="container">
             <h2>Other Products</h2>
             <div class="slider">
-                <div class="wrapper" id="wrapper2">
-                    <div class="item">
+                <div class="wrapper" id="wrapper3">
+                    <div class="item"><!-- first item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- secound item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Third item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fourth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
-                    <div class="item">
+                    <div class="item"><!-- Fifth item -->
                         <img src="assets/pic.jpeg"  alt="Describe Image">
                     </div>
                 </div>
@@ -210,10 +187,10 @@
                       <div class="group">
                         <label for="password_signup" class="label">Password</label>
                         <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
-                        <div class="eye_icon"><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
-                        <span id = "password_mes" class="messages"> </span> 
+                        <div class="eye_icon"><i class="fas fa-eye" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
                       </div>
                       <div class="group">
+                        <span id = "password_mes" class="messages"> </span> 
                         <label for="repass_signup" class="label">Confirm Password</label>
                         <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
                         <span id = "repass_mes" class="messages"> </span> 
@@ -230,7 +207,7 @@
                 </div>
               </div>
         <!-- login modal -->
-            <!-- add item modal -->
+        <!-- add item modal -->
     <div class="additem-wrap" id="additem">
       <div class="additem-html">
         <i class="far fa-times-circle" onclick="closeadditem()"></i>
@@ -311,7 +288,7 @@
                 <ul class="f-menu">
                     <li><a href="index.html" >Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="#SignUp">SignUp</a></li>
+                    <li><a href="#SignUp"onclick="openModal()">SignUp</a></li>
                     <li><a href="my-account.html">My Account</a></li>
                     <li><a href="contact.html">ContactAs</a></li>
                 </ul>
@@ -320,4 +297,5 @@
     </footer>
 </body>
 </html>
-<script src="footer.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/signin.js"></script> <!--link to the js file-->

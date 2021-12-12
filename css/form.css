@@ -1,12 +1,12 @@
 :root {
-    --background: rgb(214,239,199, .8);
+    --background:  #d6efc7;
     --button: linear-gradient(to right, #f7bc3d, #f5ab0c); 
     --input: white;
     --label: #aaaaaa;
     --tab: #6a6f8c;
     --input_text: black;
   }
-  
+  /* form (contact, Edit account, add item forms) styles to keep the project organized */
 
   *,:after,:before{box-sizing:border-box}
   .clearfix:after,.clearfix:before{content:'';display:table}
@@ -41,7 +41,6 @@
     right: 5%;
   }
   .form-wrap{
-    width:100%;
     margin:auto;
     max-width:525px;
     min-height:670px;
@@ -190,6 +189,7 @@
     z-index: 9999;
     top: 50%;
     right: 10px;
+    height: 0px;
   }
   
   .messages {
@@ -210,4 +210,14 @@
 
   #avail_time {
     text-align: left;
+  }
+
+  /* make the form styles responsive */
+  @media only screen and (max-width: 550px) {
+    .form-wrap{
+      margin: 20px;
+    }
+    .form-html{
+      padding: 20px 40px;
+    }
   }

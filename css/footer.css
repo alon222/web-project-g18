@@ -1,12 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    background: #fcfcfc;
-    font-family: sans-serif;
-}
+/* footer styles to keep the project organized */
 footer{
     margin-top: 50px;
     background: #111;
@@ -38,7 +30,6 @@ footer{
 
 .footer-bottom{
     background: #000;
-    width: 100%;
     padding: 20px;
     padding-bottom: 40px;
     text-align: center;
@@ -83,16 +74,16 @@ display: block;
     margin-left: 0px;
     color: var(--mainColor);
 }
+/* responsive footer styles */
 @media (max-width:500px) {
-.footer-menu ul{
+    .footer-menu ul{
     display: flex;
     margin-top: 10px;
     margin-bottom: 20px;
     }
-.footer-content p{
-    margin: 10px 20px 20px 20px;
-}
-
+    .footer-content p{
+        margin: 10px 20px 20px 20px;
+    }
 }
 @media (max-width:800px) {
     .footer-bottom{

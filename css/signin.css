@@ -1,5 +1,5 @@
 :root {
-  --background:  rgb(214,239,199, .8);
+  --background:  #d6efc7;
   --button: linear-gradient(to right, #f7bc3d, #f5ab0c); 
   --input: white;
   --label: #aaaaaa;
@@ -7,6 +7,7 @@
   --input_text: black;
 }
 
+/* form (signin signup forms) styles to keep the project organized */
 .login-wrap{
   display: none;
   position: fixed;
@@ -30,7 +31,7 @@
 
 .login-html i{
   font-size: 30px;
-  color: white;
+  color: BLACK;
   position: absolute;
   top: 5%;
   right: 5%;
@@ -189,9 +190,12 @@
   position: absolute;
   z-index: 9999;
 	top: 50%;
+  transform: translate(-50%,-50%);
 	right: 10px;
 }
-
+.eye_icon i{
+  font-size: 20px;
+}
 .messages { /*alert messages for user*/
   color:red ;
   font-size: 10px;
@@ -201,3 +205,4 @@
 .icon{ /*checkbox*/
   outline: 1px solid black;
 }
+

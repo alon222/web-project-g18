@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Account</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="form.css">
-    <script src="header.js"></script> <!-- call to js file -->
+    <link rel="stylesheet" href="css/header.css"><!-- header styles -->
+    <link rel="stylesheet" href="css/footer.css"><!-- footer styles -->
+    <link rel="stylesheet" href="css/style.css"><!-- page styles -->
+    <link rel="stylesheet" href="css/form.css"><!-- form styles -->
+    <script src="js/header.js"></script> <!-- call to js file -->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
 </head>
 <body>
@@ -52,10 +52,10 @@
                   <div class="group">
                     <label for="password_signup" class="label">Password</label>
                     <input id="password_signup" name="password" type="password" minlength="8" maxlength="15" class="input" required value="********">
-                    <div class="eye_icon"><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
-                    <span id = "password_mes" class="messages"></span> 
+                    <div class="eye_icon"><i class="fas fa-eye" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
                   </div>
                   <div class="group">
+                    <span id = "password_mes" class="messages"></span> 
                     <label for="repass_signup" class="label">Confirm Password</label>
                     <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
                     <span id = "repass_mes" class="messages"> </span> 
@@ -91,3 +91,4 @@
     </footer>
 </body>
 </html>
+<script src="js/signin.js"></script> <!--link to the js file-->
