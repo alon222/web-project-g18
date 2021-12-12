@@ -43,15 +43,16 @@
         </div>
          <!-- login modal -->
          <div class="login-wrap" id="modal">
-            <div class="login-html">
-                <i class="far fa-times-circle" onclick="closemodal()"></i>
-              <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
-              <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
-              <div class="login-form">
+          <div class="login-html">
+              <i class="far fa-times-circle" onclick="closemodal()"></i>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+              <form action="/todo" method="post">
                 <div class="sign-in-htm">
                   <div class="group">
                     <label for="user_signin" class="label">Username</label>
-                    <input id="user_signin" type="text" class="input" required>
+                    <input id="user_signin" name="user_signin" type="text" class="input" required>
                   </div>
                   <div class="group">
                     <label for="password" class="label">Password</label>
@@ -66,31 +67,33 @@
                   </div>
                   <div class="hr"></div>
                 </div>
-                <div class="sign-up-htm">
+              </form>
+              <div class="sign-up-htm">
+                <form action="/todo" method="post">
                   <div class="group">
                     <label for="user_signup" class="label">Username</label>
-                    <input id="user_signup" type="text" class="input" required>
+                    <input id="user_signup" name="user_signup" type="text" class="input" required>
                     <span id = "username_mes" class="messages"> </span> 
                   </div>
                   <div class="group">
                     <label for="Email" class="label">Email Address</label>
-                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
+                    <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
                     <span id = "email_mes" class="messages"> </span> 
                   </div>
                   <div class="group">
                     <label for="phone" class="label">Phone Number</label>
-                    <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
+                    <input id="phone" name="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
                     <span id = "phone_mes" class="messages"> </span> 
                   </div> 
                   <div class="group">
                     <label for="password_signup" class="label">Password</label>
                     <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
-                    <div class="eye_icon"><i class="fas fa-eye" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
+                    <div class="eye_icon"><i class="fas fa-eye" id="togglePassword"></i></div>
                     <span id = "password_mes" class="messages"> </span> 
                   </div>
                   <div class="group">
                     <label for="repass_signup" class="label">Confirm Password</label>
-                    <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
+                    <input id="repass_signup" name="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
                     <span id = "repass_mes" class="messages"> </span> 
                   </div>
                   <div class="group">
@@ -100,10 +103,11 @@
                   <div class="foot-lnk">
                     <label for="tab-1">Already Member?</label>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
+        </div>
     <!-- login modal -->
     </main>
     <footer>

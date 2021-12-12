@@ -32,34 +32,36 @@
         <div class="page">
             <h1>Contact As</h1>
         </div>
-        <div class="form-wrap"><!-- contact form -->
-            <div class="form-html">
-              <div class="form-form">
-                <div class="sign-in-htm">         
-                  <div class="group">
-                    <label for="Email" class="label">Your email address</label>
-                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required>
-                    <span id = "email_mes" class="messages"></span> 
-                  </div>
-                  <div class="group">
-                    <label for="subject" class="label">Subject</label>
-                    <input id="subject" type="text" class="input" required>
-                    <span id = "subject_mes" class="messages"></span> 
-                  </div>
-                  <div class="group">
-                    <label for="description" class="label">Description</label>
-                    <textarea id="description" cols ="30" rows="10" class="input" required></textarea>
-                    <span id = "description_mes" class="messages"> </span> <br><br> 
-                    <h3>Please enter the details of your request.</h3>
-                    <h3>A member of our support staff will respond as soon as possible.</h3>
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Submit" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_contactus()">
+        <form action="/todo">
+          <div class="form-wrap"><!-- contact form -->
+              <div class="form-html">
+                <div class="form-form">
+                  <div class="sign-in-htm">         
+                    <div class="group">
+                      <label for="Email" class="label">Your email address</label>
+                      <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required>
+                      <span id = "email_mes" class="messages"></span> 
+                    </div>
+                    <div class="group">
+                      <label for="subject" class="label">Subject</label>
+                      <input id="subject" name="subject" type="text" class="input" required>
+                      <span id = "subject_mes" class="messages"></span> 
+                    </div>
+                    <div class="group">
+                      <label for="description" class="label">Description</label>
+                      <textarea id="description" name="description" cols ="30" rows="10" class="input" required></textarea>
+                      <span id = "description_mes" class="messages"> </span> <br><br> 
+                      <h3>Please enter the details of your request.</h3>
+                      <h3>A member of our support staff will respond as soon as possible.</h3>
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Submit" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_contactus()">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
           <!-- contact form -->
            <!-- login modal -->
            <div class="login-wrap" id="modal">
@@ -68,58 +70,62 @@
               <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
               <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
               <div class="login-form">
-                <div class="sign-in-htm">
-                  <div class="group">
-                    <label for="user_signin" class="label">Username</label>
-                    <input id="user_signin" type="text" class="input" required>
+                <form action="/todo"></form>
+                  <div class="sign-in-htm">
+                    <div class="group">
+                      <label for="user_signin" class="label">Username</label>
+                      <input id="user_signin" name="user_signin" type="text" class="input" required>
+                    </div>
+                    <div class="group">
+                      <label for="password" class="label">Password</label>
+                      <input id="password" name="password" type="password" class="input" required>
+                    </div>
+                    <div class="group">
+                      <input id="check" type="checkbox" class="check" checked>
+                      <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Sign In" style= "color: white; font-weight: bold; font-size: 15px;">
+                    </div>
+                    <div class="hr"></div>
                   </div>
-                  <div class="group">
-                    <label for="password" class="label">Password</label>
-                    <input id="password" name="password" type="password" class="input" required>
-                  </div>
-                  <div class="group">
-                    <input id="check" type="checkbox" class="check" checked>
-                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Sign In" style= "color: white; font-weight: bold; font-size: 15px;">
-                  </div>
-                  <div class="hr"></div>
-                </div>
+                </form>
                 <div class="sign-up-htm">
-                  <div class="group">
-                    <label for="user_signup" class="label">Username</label>
-                    <input id="user_signup" type="text" class="input" required>
-                    <span id = "username_mes" class="messages"> </span> 
-                  </div>
-                  <div class="group">
-                    <label for="Email" class="label">Email Address</label>
-                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
-                    <span id = "email_mes" class="messages"> </span> 
-                  </div>
-                  <div class="group">
-                    <label for="phone" class="label">Phone Number</label>
-                    <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
-                    <span id = "phone_mes" class="messages"> </span> 
-                  </div> 
-                  <div class="group">
-                    <label for="password_signup" class="label">Password</label>
-                    <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
-                    <div class="eye_icon"><i class="fas fa-eye" id="togglePassword"></i></div>
-                    <span id = "password_mes" class="messages"> </span> 
-                  </div>
-                  <div class="group">
-                    <label for="repass_signup" class="label">Confirm Password</label>
-                    <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
-                    <span id = "repass_mes" class="messages"> </span> 
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Sign Up" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
-                  </div>
-                  <div class="hr"></div>
-                  <div class="foot-lnk">
-                    <label for="tab-1">Already Member?</label>
-                  </div>
+                  <form action="/todo">
+                    <div class="group">
+                      <label for="user_signup" class="label">Username</label>
+                      <input id="user_signup" name="user_signup" type="text" class="input" required>
+                      <span id = "username_mes" class="messages"> </span> 
+                    </div>
+                    <div class="group">
+                      <label for="Email" class="label">Email Address</label>
+                      <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
+                      <span id = "email_mes" class="messages"> </span> 
+                    </div>
+                    <div class="group">
+                      <label for="phone" class="label">Phone Number</label>
+                      <input id="phone" name="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
+                      <span id = "phone_mes" class="messages"> </span> 
+                    </div> 
+                    <div class="group">
+                      <label for="password_signup" class="label">Password</label>
+                      <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
+                      <div class="eye_icon"><i class="fas fa-eye" id="togglePassword"></i></div>
+                      <span id = "password_mes" class="messages"> </span> 
+                    </div>
+                    <div class="group">
+                      <label for="repass_signup" class="label">Confirm Password</label>
+                      <input id="repass_signup" name="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
+                      <span id = "repass_mes" class="messages"> </span> 
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Sign Up" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                      <label for="tab-1">Already Member?</label>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

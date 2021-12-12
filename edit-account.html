@@ -36,17 +36,17 @@
               <div class="form-form">
                     <div class="group">
                     <label for="user_signup" class="label">Username</label>
-                    <input id="user_signup" type="text" class="input" required value="username">
+                    <input id="user_signup" name="user_signup" type="text" class="input" required value="username">
                     <span id = "username_mes" class="messages"></span> 
                   </div>
                   <div class="group">
                     <label for="Email" class="label">Email Address</label>
-                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="example@example.com">
+                    <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="example@example.com">
                     <span id = "email_mes" class="messages"></span> 
                   </div>
                   <div class="group">
                     <label for="phone" class="label">Phone Number</label>
-                    <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="0500000000"> 
+                    <input id="phone" name="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="0500000000"> 
                     <span id = "phone_mes" class="messages" ></span> 
                   </div> 
                   <div class="group">
@@ -57,7 +57,7 @@
                   <div class="group">
                     <span id = "password_mes" class="messages"></span> 
                     <label for="repass_signup" class="label">Confirm Password</label>
-                    <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
+                    <input id="repass_signup" name="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
                     <span id = "repass_mes" class="messages"> </span> 
                   </div>
                   <div class="group">
