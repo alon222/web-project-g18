@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css"> <!-- page styles -->
     <link rel="stylesheet" href="css/header.css"> <!-- header styles -->
     <link rel="stylesheet" href="css/footer.css"> <!-- footer styles -->
+    <link rel="stylesheet" href="css/signin.css"><!--styles for login popup-->
+    <link rel="stylesheet" href="form.css"><!--styles for additem popup-->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
     <script src="header.js"></script> <!-- call to js file -->
 </head>
@@ -164,6 +166,135 @@
                 <i class="fas fa-plus"></i>
             </button>
         </div>
+        <!-- login modal -->
+            <div class="login-wrap" id="modal">
+                <div class="login-html">
+                    <i class="far fa-times-circle" onclick="closemodal()"></i>
+                  <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
+                  <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
+                  <div class="login-form">
+                    <div class="sign-in-htm">
+                      <div class="group">
+                        <label for="user_signin" class="label">Username</label>
+                        <input id="user_signin" type="text" class="input" required>
+                      </div>
+                      <div class="group">
+                        <label for="password" class="label">Password</label>
+                        <input id="password" name="password" type="password" class="input" required>
+                      </div>
+                      <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                      </div>
+                      <div class="group">
+                        <input type="submit" class="button" value="Sign In" style= "color: white; font-weight: bold; font-size: 15px;">
+                      </div>
+                      <div class="hr"></div>
+                    </div>
+                    <div class="sign-up-htm">
+                      <div class="group">
+                        <label for="user_signup" class="label">Username</label>
+                        <input id="user_signup" type="text" class="input" required>
+                        <span id = "username_mes" class="messages"> </span> 
+                      </div>
+                      <div class="group">
+                        <label for="Email" class="label">Email Address</label>
+                        <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
+                        <span id = "email_mes" class="messages"> </span> 
+                      </div>
+                      <div class="group">
+                        <label for="phone" class="label">Phone Number</label>
+                        <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
+                        <span id = "phone_mes" class="messages"> </span> 
+                      </div> 
+                      <div class="group">
+                        <label for="password_signup" class="label">Password</label>
+                        <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
+                        <div class="eye_icon"><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
+                        <span id = "password_mes" class="messages"> </span> 
+                      </div>
+                      <div class="group">
+                        <label for="repass_signup" class="label">Confirm Password</label>
+                        <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
+                        <span id = "repass_mes" class="messages"> </span> 
+                      </div>
+                      <div class="group">
+                        <input type="submit" class="button" value="Sign Up" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
+                      </div>
+                      <div class="hr"></div>
+                      <div class="foot-lnk">
+                        <label for="tab-1">Already Member?</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- login modal -->
+            <!-- add item modal -->
+    <div class="additem-wrap" id="additem">
+      <div class="additem-html">
+        <i class="far fa-times-circle" onclick="closeadditem()"></i>
+        <label for="tab-1" class="tab">New donation</label>
+        <div class="form-form">
+          <div class="sign-in-htm">
+              <div class="group">
+                  <label for="category" class="label">Category</label>
+                  <select id="category" class="input" required>
+                      <option value="">Please choose a category</option>
+                      <optgroup label="Food">
+                          <option value="fruits">Fruits</option>
+                          <option value="vegetables">Vegetables</option>
+                          <option value="grains">Grains</option>
+                          <option value="protein">Protein Foods</option>
+                          <option value="dairy">Dairy</option>
+                      </optgroup>
+                      <option value="clothes">Clothes</option>
+                      <option value="furniture">Furniture</option>
+                      <option value="other">Other</option>
+                  </select>
+                  <span id = "category_mes" class="messages"></span> 
+            </div>
+            <div class="group">
+              <label for="product" class="label">What would you like to donate?</label>
+              <input id="product" type="text" class="input" required >
+              <span id = "product_mes" class="messages"></span> 
+            </div>
+            <div class="group">
+              <label for="avail" class="label">Until when available?</label>
+              <input id="avail_date" type="date" class="input" required>
+              <input id="avail_time" type="time" class="input" required> 
+              <span id = "avail_mes" class="messages" ></span> 
+            </div> 
+            <div class="group">
+                <div class="address" style="display:table;"> 
+                  <div class="cell" style="display: table-cell;";> 
+                      <label for="street" class="label">Street</label>
+                      <input id="street" type="text" class="input" required size="48%">
+                  </div>
+                  <div class="cell" style="display: table-cell;";> 
+                      <label for="number" class="label">Number</label>
+                      <input id="number" type="number" class="input" required size="4%" min="0">
+                  </div>
+                  <div class="cell" style="display: table-cell;";> 
+                      <label for="city" class="label">City</label>
+                      <input id="city" type="text" class="input" required size="48%">
+                  </div>                           
+                </div>               
+              <span id = "address_mes" class="messages"></span> 
+            </div>
+            <div class="group">
+              <label for="donation_image" class="label">Attachments</label>
+              <input id="donation_image" type="file" class="input" required value="">
+              <span id = "donation_image_mes" class="messages"> </span> 
+            </div>
+            <div class="group">
+              <input type="submit" class="button" value="Confirm" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_donation()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- add item modal -->
     </main>
     <footer>
         <div class="footer-content">

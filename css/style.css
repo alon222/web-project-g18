@@ -7,21 +7,16 @@
     padding: 0;
     margin: 0;
 }
-
-
 .container{
   margin-left: 40px;
   margin-right: 40px;
 }
-
-
 /* hero section */
 #title{
-  margin-top: 20vh;
+  margin-top: 10vh;
   text-align: center;   
   font-weight: 600;
   color: var(--mainColor);
-
   font-size: 35px;
 }
 .hero{

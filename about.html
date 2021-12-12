@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signin.css">
     <script src="header.js"></script> <!-- call to js file -->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
 
@@ -19,11 +20,10 @@
                 <div class="logo">Trom<span>Oti</span></div>
                 <a href="contact.html">ContactAs</a>
                 <a href="my-account.html">My Account</a>
-                <a href="#SignUp">SignUp</a>
+                <a href="#SignUp" onclick="openModal()">SignUp</a>
                 <a href="about.html" class="active">About</a>
                 <a href="index.html">Home</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
-                <link rel="stylesheet" href="item.css">
             </div>
         </nav>
     </header>
@@ -41,6 +41,70 @@
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde porro qui ipsa molestias exercitationem quisquam, in laborum rem inventore, placeat cupiditate architecto sequi consectetur illum optio? Ut tempora corrupti vero!
             </p>
         </div>
+         <!-- login modal -->
+         <div class="login-wrap" id="modal">
+            <div class="login-html">
+                <i class="far fa-times-circle" onclick="closemodal()"></i>
+              <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
+              <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
+              <div class="login-form">
+                <div class="sign-in-htm">
+                  <div class="group">
+                    <label for="user_signin" class="label">Username</label>
+                    <input id="user_signin" type="text" class="input" required>
+                  </div>
+                  <div class="group">
+                    <label for="password" class="label">Password</label>
+                    <input id="password" name="password" type="password" class="input" required>
+                  </div>
+                  <div class="group">
+                    <input id="check" type="checkbox" class="check" checked>
+                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                  </div>
+                  <div class="group">
+                    <input type="submit" class="button" value="Sign In" style= "color: white; font-weight: bold; font-size: 15px;">
+                  </div>
+                  <div class="hr"></div>
+                </div>
+                <div class="sign-up-htm">
+                  <div class="group">
+                    <label for="user_signup" class="label">Username</label>
+                    <input id="user_signup" type="text" class="input" required>
+                    <span id = "username_mes" class="messages"> </span> 
+                  </div>
+                  <div class="group">
+                    <label for="Email" class="label">Email Address</label>
+                    <input id="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required> 
+                    <span id = "email_mes" class="messages"> </span> 
+                  </div>
+                  <div class="group">
+                    <label for="phone" class="label">Phone Number</label>
+                    <input id="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required> 
+                    <span id = "phone_mes" class="messages"> </span> 
+                  </div> 
+                  <div class="group">
+                    <label for="password_signup" class="label">Password</label>
+                    <input id="password_signup" name="password_signup" type="password" minlength="8" maxlength="15" class="input" required>
+                    <div class="eye_icon"><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
+                    <span id = "password_mes" class="messages"> </span> 
+                  </div>
+                  <div class="group">
+                    <label for="repass_signup" class="label">Confirm Password</label>
+                    <input id="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required>
+                    <span id = "repass_mes" class="messages"> </span> 
+                  </div>
+                  <div class="group">
+                    <input type="submit" class="button" value="Sign Up" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
+                  </div>
+                  <div class="hr"></div>
+                  <div class="foot-lnk">
+                    <label for="tab-1">Already Member?</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- login modal -->
     </main>
     <footer>
         <div class="footer-content">

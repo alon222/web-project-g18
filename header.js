@@ -55,9 +55,18 @@ function myFunction() {
     //   popup trigger
 
     function openModal(){
-      console.log("asda")
+      var modal = document.getElementById("modal");
+      modal.style.display="block"
     }
-
+    function closemodal(){
+      var modal = document.getElementById("modal");
+      modal.style.display="none"
+    }
     function additem(){
-      console.log("asda")
+      var item = document.getElementById("additem");
+      item.style.display="block"
+    }
+    function closeadditem(){
+      var item = document.getElementById("additem");
+      item.style.display="none"
     }
