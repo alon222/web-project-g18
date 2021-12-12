@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="css/signin.css"><!-- signup popup styles -->
     <script src="js/header.js"></script> <!-- call to js file -->
     <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
-    <title>ContactAs</title>
+    <title>ContactUs</title>
 </head>
 <body>
     <header>
         <nav>
             <div class="topnav" id="myTopnav">
                 <div class="logo">Trom<span>Oti</span></div>
-                <a href="contact.html" class="active">ContactAs</a>
+                <a href="contact.html" class="active">ContactUs</a>
                 <a href="my-account.html">My Account</a>
                 <a href="#SignUp" onclick="openModal()">SignUp</a>
                 <a href="about.html">About</a>
@@ -32,7 +32,7 @@
         <div class="page">
             <h1>Contact As</h1>
         </div>
-        <form action="/todo">
+        <form action="/todo" method="post">
           <div class="form-wrap"><!-- contact form -->
               <div class="form-html">
                 <div class="form-form">
@@ -70,7 +70,7 @@
               <input id="tab-1" type="radio" name="tab" class="sign-in" checked onclick="return reset_signup()"><label for="tab-1" class="tab">Sign In</label>
               <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="return reset_signin()" ><label for="tab-2" class="tab">Sign Up</label>
               <div class="login-form">
-                <form action="/todo"></form>
+                <form action="/todo" method="post">
                   <div class="sign-in-htm">
                     <div class="group">
                       <label for="user_signin" class="label">Username</label>
@@ -91,7 +91,7 @@
                   </div>
                 </form>
                 <div class="sign-up-htm">
-                  <form action="/todo">
+                  <form action="/todo" method="post">
                     <div class="group">
                       <label for="user_signup" class="label">Username</label>
                       <input id="user_signup" name="user_signup" type="text" class="input" required>
@@ -149,7 +149,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="#SignUp"onclick="openModal()">SignUp</a></li>
                     <li><a href="my-account.html">My Account</a></li>
-                    <li><a href="contact.html">ContactAs</a></li>
+                    <li><a href="contact.html">ContactUs</a></li>
                 </ul>
             </div>
         </div>

@@ -4,9 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/header.css"><!-- header styles -->
+    <link rel="stylesheet" href="css/footer.css"><!-- footer styles -->
+    <link rel="stylesheet" href="css/style.css"><!-- page styles -->
+    <script src="js/header.js"></script> <!-- call to js file -->
+    <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
+    <title>OrderSummery</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <div class="topnav" id="myTopnav">
+                <div class="logo">Trom<span>Oti</span></div>
+                <a href="contact.html">ContactUs</a>
+                <a href="my-account.html" class="active">My Account</a>
+                <a href="#SignUp" onclick="openModal()">SignUp</a>
+                <a href="about.html" >About</a>
+                <a href="index.html">Home</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+                <link rel="stylesheet" href="item.css">
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="page container">
+            <h2>Hi, {name place holder} this is Order Summery</h1>
+            <div class="product-wraper">
+                <ul>
+                    <li><i class="fas fa-barcode"></i>   Category: Food</li>
+                    <li><i class="fas fa-info"></i>   Sub Category: Vegtables</li>
+                    <li><i class="fas fa-shopping-cart"></i>    Product: Tomato, 2kg</li>
+                    <li><i class="far fa-clock"></i>   Until: may 13 ,20:00</li>
+                    <li><i class="fas fa-map-marked-alt"></i>   Address: Rabi Akiva 6, Beer-Sheva</li>
+                    <li><i class="fas fa-phone"></i>   Tel: 0555555555</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Trom<span>Oti</span></div>
+            <p>
+                TromOti is an app that serves as a dedicated platform for donations to the needy. The app serves as an interface
+                Which connects the various associations or individuals and the donating business owners, in a simple and effective way so
+                Minimal effort will be required from donors. 
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy; <a href="#">TromOti</a>  </p>
+            <div class="footer-menu">
+                <ul class="f-menu">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#SignUp">SignUp</a></li>
+                    <li><a href="my-account.html">My Account</a></li>
+                    <li><a href="contact.html">ContactUs</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

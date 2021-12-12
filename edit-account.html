@@ -17,7 +17,7 @@
         <nav>
             <div class="topnav" id="myTopnav">
                 <div class="logo">Trom<span>Oti</span></div>
-                <a href="contact.html">ContactAs</a>
+                <a href="contact.html">ContactUs</a>
                 <a href="my-account.html" class="active">My Account</a>
                 <a href="#SignUp" onclick="openModal()">SignUp</a>
                 <a href="about.html" >About</a>
@@ -34,38 +34,40 @@
         <div class="form-wrap">
             <div class="form-html">    
               <div class="form-form">
+                  <form action="/todo" method="post">
                     <div class="group">
-                    <label for="user_signup" class="label">Username</label>
-                    <input id="user_signup" name="user_signup" type="text" class="input" required value="username">
-                    <span id = "username_mes" class="messages"></span> 
-                  </div>
-                  <div class="group">
-                    <label for="Email" class="label">Email Address</label>
-                    <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="example@example.com">
-                    <span id = "email_mes" class="messages"></span> 
-                  </div>
-                  <div class="group">
-                    <label for="phone" class="label">Phone Number</label>
-                    <input id="phone" name="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="0500000000"> 
-                    <span id = "phone_mes" class="messages" ></span> 
-                  </div> 
-                  <div class="group">
-                    <label for="password_signup" class="label">Password</label>
-                    <input id="password_signup" name="password" type="password" minlength="8" maxlength="15" class="input" required value="********">
-                    <div class="eye_icon"><i class="fas fa-eye" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
-                  </div>
-                  <div class="group">
-                    <span id = "password_mes" class="messages"></span> 
-                    <label for="repass_signup" class="label">Confirm Password</label>
-                    <input id="repass_signup" name="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
-                    <span id = "repass_mes" class="messages"> </span> 
-                  </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Update" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
-                  </div>
+                      <label for="user_signup" class="label">Username</label>
+                      <input id="user_signup" name="user_signup" type="text" class="input" required value="username">
+                      <span id = "username_mes" class="messages"></span> 
+                    </div>
+                    <div class="group">
+                      <label for="Email" class="label">Email Address</label>
+                      <input id="Email" name="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="example@example.com">
+                      <span id = "email_mes" class="messages"></span> 
+                    </div>
+                    <div class="group">
+                      <label for="phone" class="label">Phone Number</label>
+                      <input id="phone" name="phone" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="0500000000"> 
+                      <span id = "phone_mes" class="messages" ></span> 
+                    </div> 
+                    <div class="group">
+                      <label for="password_signup" class="label">Password</label>
+                      <input id="password_signup" name="password" type="password" minlength="8" maxlength="15" class="input" required value="********">
+                      <div class="eye_icon"><i class="fas fa-eye" id="togglePassword" style="margin-left: 350px; margin-bottom: 0px; cursor: pointer;"></i></div>
+                    </div>
+                    <div class="group">
+                      <span id = "password_mes" class="messages"></span> 
+                      <label for="repass_signup" class="label">Confirm Password</label>
+                      <input id="repass_signup" name="repass_signup" type="password" minlength="8" maxlength="15"  class="input" required value="********">
+                      <span id = "repass_mes" class="messages"> </span> 
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Update" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
+                    </div>
+                  </form>
                 </div>
               </div>
-            </div>
+          </div>
     </main>
     <footer>
         <div class="footer-content">
@@ -84,7 +86,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="#SignUp">SignUp</a></li>
                     <li><a href="my-account.html">My Account</a></li>
-                    <li><a href="contact.html">ContactAs</a></li>
+                    <li><a href="contact.html">ContactUs</a></li>
                 </ul>
             </div>
         </div>

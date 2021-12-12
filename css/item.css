@@ -97,15 +97,9 @@
     height: 250px;
   }
   .item .front .img1 {
-    background-image: url(http://i.imgur.com/1aE1nMA.jpg);
+    background-image: url(../assets/tomato.jpeg);
   }
-  .item .front .img2 {
-    background-image: url(http://i.imgur.com/2p9VXAn.jpg);
-  }
-  .item .front .img3 {
-    background-image: url(http://i.imgur.com/I5ABT2v.jpg);
-  }
-  
+
   .item .back {
     position: relative;
   }
