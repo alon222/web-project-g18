@@ -1,5 +1,5 @@
 
-/* header styles to keep the project organized */
+/* footer styles to keep the project organized */
 :root{
     --mainColor: orange;
   }
@@ -58,14 +58,16 @@
     }
   }
   
-.logo{
+.topnav .logo a {
+    float: left;
     font-size: 40px;
     font-weight: 600;
     display: inline;
     margin-left: 40px;
     color: white;
+    padding: 0px;
 }
-.logo span{
+a .logo span{
     font-size: 40px;
     font-weight: 400;
 }
