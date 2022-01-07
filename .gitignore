@@ -1,0 +1,6 @@
+project/__pycache__/
+project/utilities/__pycache__/
+project/utilities/db/__pycache__/
+*__pycache__*
+*.idea*
+.DS_Store
