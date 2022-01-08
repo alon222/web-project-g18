@@ -1,14 +1,17 @@
 import datetime
+import pathlib
 
 import pytest
 
-from project import app_errors
+from project import app_errors, settings
 from project.utilities.db import initialize_db
 from project.utilities.donations_management import DonationsManagement, Donation
 from project.utilities.donations_management.donation import DonationAvailabilityStatus, DonationCategory
 
 
 class TestDonationsManagement:
+    DONATION_IMAGE_PATH = str(pathlib.Path(settings.UPLOAD_FOLDER, 'tomato.jpeg'))
+
 
     def test_available_donations(self):
         initialize_db.initialize_db()
@@ -60,12 +63,12 @@ class TestDonationsManagement:
 
 
         with pytest.raises(app_errors.AppError) as e:
-            DonationsManagement.add_donation(category_str=new_category.name, address=new_address, description=new_description, available_until_str=Donation.convert_available_until_date_to_str(new_available_until), donating_user_id=some_donation.donating_user_id)
+            DonationsManagement.add_donation(category_str=new_category.name, address=new_address, description=new_description, available_until_str=Donation.convert_available_until_date_to_str(new_available_until), donating_user_id=some_donation.donating_user_id, donation_image_path=self.DONATION_IMAGE_PATH)
         assert e.value.message == 'Insufficient time to pickup donation', 'Cannot add donation in the past'
 
 
         new_available_until = datetime.datetime.now() + datetime.timedelta(hours=1000)
-        DonationsManagement.add_donation(category_str=new_category.name, address=new_address, description=new_description, available_until_str=Donation.convert_available_until_date_to_str(new_available_until), donating_user_id=some_donation.donating_user_id)
+        DonationsManagement.add_donation(category_str=new_category.name, address=new_address, description=new_description, available_until_str=Donation.convert_available_until_date_to_str(new_available_until), donating_user_id=some_donation.donating_user_id, donation_image_path=self.DONATION_IMAGE_PATH)
         user_donations_after_insertion = DonationsManagement.get_user_donations(user_id=some_donation.donating_user_id)
         assert len(user_donations_after_insertion) == len(initial_user_donations) + 1
 

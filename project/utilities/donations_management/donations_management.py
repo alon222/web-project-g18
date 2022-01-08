@@ -15,12 +15,13 @@ class DonationsManagement:
                         " `available_until` TIMESTAMP NOT NULL," \
                         " `address` varchar(255) NOT NULL," \
                         "`donating_user` INT NOT NULL," \
+                        "`donation_image_path` varchar(255) NOT NULL," \
                         f"`availability_status` ENUM({_statues}) NOT NULL DEFAULT '{DonationAvailabilityStatus.AVAILABLE.name}'," \
                         " FOREIGN KEY (donating_user) REFERENCES users(id) )"
+
     _DELETE_TABLE_SQL = "DROP TABLE donations;"
 
-    _INSERT_DONATION_SQL = "INSERT INTO donations (category, description, available_until, address, donating_user)" \
-                           " VALUES (%s, %s, %s, %s, %s)"
+    _INSERT_DONATION_SQL = "INSERT INTO donations (category, description, available_until, address, donating_user, donation_image_path) VALUES (%s, %s, %s, %s, %s, %s)"
     _GET_ALL_AVAILABLE_DONATIONS_SQL = f"SELECT * FROM donations WHERE availability_status = %s AND available_until > now()"
     _GET_ALL_USER_DONATIONS_SQL = "SELECT * FROM donations WHERE donating_user = %s;"
     _DELETE_DONATION_SQL = "DELETE FROM donations WHERE id = %s AND donating_user = %s;"
@@ -59,15 +60,16 @@ class DonationsManagement:
             Donation(
                 donation_id=d.id, category=DonationCategory.get_from_str(d.category), description=d.description,
                 available_until=d.available_until, address=d.address, donating_user_id=d.donating_user,
-                availability_status=DonationAvailabilityStatus.get_from_str(d.availability_status)
+                availability_status=DonationAvailabilityStatus.get_from_str(d.availability_status),
+                donation_image_path=d.donation_image_path,
             ) for d in raw_donations_details
         ]
 
     @classmethod
-    def add_donation(cls, category_str: str, description: str, available_until_str: str, address: str, donating_user_id: int):
+    def add_donation(cls, category_str: str, description: str, available_until_str: str, address: str, donating_user_id: int, donation_image_path: str):
         category = cls._parse_or_raise_category(category_str)
         available_until = cls._parse_or_raise_available_until_str(available_until_str)
-        donation = Donation(category=category, description=description, available_until=available_until, address=address, donating_user_id=donating_user_id)
+        donation = Donation(category=category, description=description, available_until=available_until, address=address, donating_user_id=donating_user_id, donation_image_path=donation_image_path)
         cls._insert_donation_to_db(donation)
 
     @classmethod
@@ -76,7 +78,8 @@ class DonationsManagement:
         num_rows_inserted = dbManager.commit(cls._INSERT_DONATION_SQL,
                                              (donation.category.name, donation.description,
                                               donation.available_until_str, donation.address,
-                                              donation.donating_user_id))
+                                              donation.donating_user_id,
+                                              donation.donation_image_path))
         if num_rows_inserted == dbManager.ERROR_CODE:
             raise app_errors.AppError('Failed inserting donation', payload={'category': donation.category.name})
 

@@ -1,5 +1,6 @@
 import datetime
 import enum
+import pathlib
 from typing import Optional
 
 from project import app_errors
@@ -41,7 +42,7 @@ class Donation:
 
     _MIN_MINUTES_TO_PICK_UP_PRODUCT = 24 * 60  # 24 hours
 
-    def __init__(self, category: DonationCategory, description: str, available_until: datetime.datetime, address: str, availability_status: Optional[DonationAvailabilityStatus] = None, donation_id: Optional[int] = None, donating_user_id: Optional[int] = None):
+    def __init__(self, category: DonationCategory, description: str, available_until: datetime.datetime, address: str, donation_image_path: str, availability_status: Optional[DonationAvailabilityStatus] = None, donation_id: Optional[int] = None, donating_user_id: Optional[int] = None):
         self._category = category
         self._description = description
         self._available_until = available_until
@@ -49,6 +50,7 @@ class Donation:
         self._donation_id = donation_id
         self._donating_user_id = donating_user_id
         self._availability_status = availability_status
+        self._donation_image_path = donation_image_path
 
     def __str__(self):
         return f'{self.category}__{self.description}__{self.donating_user_id}__{self._availability_status}'
@@ -64,6 +66,10 @@ class Donation:
     @property
     def category(self) -> DonationCategory:
         return self._category
+
+    @property
+    def donation_image_path(self) -> str:
+        return self._donation_image_path
 
     @property
     def description(self) -> str:
@@ -90,7 +96,7 @@ class Donation:
         return self._availability_status
 
     def validate_donation_details(self):
-        return self._validate_availability_date()
+        return self._validate_availability_date() and self._validate_donation_image()
 
     def _validate_availability_date(self) -> bool:
         min_time_for_pickup = datetime.datetime.utcnow() + datetime.timedelta(minutes=self._MIN_MINUTES_TO_PICK_UP_PRODUCT)
@@ -106,5 +112,11 @@ class Donation:
             'available_until': self.convert_available_until_date_to_str(self.available_until),
             'address': self.address,
             'donating_user_id': self.donating_user_id,
-            'availability_status': self.availability_status and self.availability_status.name
+            'availability_status': self.availability_status and self.availability_status.name,
+            'donation_image_path': self.donation_image_path
         }
+
+    def _validate_donation_image(self):
+        path = pathlib.Path(self.donation_image_path)
+        if not path.is_file():
+            raise app_errors.InvalidAPIUsage('Did not find donation image', payload={'image': self.donation_image_path})

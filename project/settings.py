@@ -1,4 +1,6 @@
 import os
+import pathlib
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -19,6 +21,10 @@ DB = {
 CONTACT_EMAIL = os.environ['CONTACT_EMAIL']
 CONTACT_EMAIL_PASSWORD = os.environ['CONTACT_EMAIL_PASSWORD']
 
-
 EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_PORT = os.environ['EMAIL_PORT']
+
+
+UPLOAD_FOLDER = pathlib.Path(pathlib.Path(os.path.realpath(__file__)).parent,  'uploaded_donation_images')
+assert UPLOAD_FOLDER.is_dir()
+

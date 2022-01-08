@@ -1,5 +1,7 @@
 import datetime
+import pathlib
 
+from project import settings
 from project.utilities import datetime_utils
 from project.utilities.donations_management import DonationsManagement
 from project.utilities.donations_management.donation import DonationCategory
@@ -31,6 +33,7 @@ predefined_donations = [
 def populate_donations():
     users = UsersManagement.get_users_from_email([d['donating_user_email'] for d in predefined_donations])
     user_id_by_email = {u.email: u.user_id for u in users}
+    donation_image_path = pathlib.Path(settings.UPLOAD_FOLDER, 'tomato.jpeg')
 
     for donation_details in predefined_donations:
         user_id = user_id_by_email[donation_details['donating_user_email']]
@@ -39,7 +42,8 @@ def populate_donations():
             description=donation_details['description'],
             available_until_str=donation_details['available_until'],
             address=donation_details['address'],
-            donating_user_id=user_id
+            donating_user_id=user_id,
+            donation_image_path=str(donation_image_path)
         )
 
 

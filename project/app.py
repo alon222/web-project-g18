@@ -2,12 +2,14 @@ import http
 
 from flask import Flask, jsonify
 
+from project import settings
 from project.app_errors import AppError
 
 
 def create_app(config_filename='settings.py'):
     app = Flask(__name__)
     app.config.from_pyfile(config_filename)
+    app.config['UPLOAD_FOLDER'] = settings.UPLOAD_FOLDER
     register_blueprints(app)
     initialize_error_handlers(app)
     return app
