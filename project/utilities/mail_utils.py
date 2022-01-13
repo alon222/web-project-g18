@@ -6,7 +6,7 @@ from email.message import EmailMessage
 def send_mail(from_email: str, subject: str, message: str, use_ssl=True):
     # TODO: https://www.tutorialspoint.com/send-mail-from-your-gmail-account-using-python
     # Set up gmail account using this instructions, to check it works run test_mail_sender.py
-
+    # Or run SMTP server locally and set in the .env file to the LOCAL host and post. more info in test_mail_sender.py
     msg = EmailMessage()
     msg['Subject'] = f"{from_email} --- {subject}"
     msg['From'] = settings.CONTACT_EMAIL
