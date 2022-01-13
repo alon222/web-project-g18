@@ -4,7 +4,7 @@ import uuid
 from flask import Blueprint, render_template, redirect, url_for, jsonify, request
 from flask import send_from_directory
 
-from project import app_errors, app, settings
+from project import app_errors, settings
 from project.utilities import api_utils
 from project.utilities.donations_management import DonationsManagement
 from project.utilities.session_helper import SessionHelper
@@ -32,7 +32,7 @@ def donations():
     return jsonify([d.serialize() for d in all_available_donations])
 
 
-@homepage.route('/donations/<donation_image_name>')
+@homepage.route('/donations/<donation_image_name>') # TODO:Alon if not needed delete
 def download_donation_image(donation_image_path: str):
     as_pathlib = pathlib.Path(donation_image_path)
     return send_from_directory(directory=str(as_pathlib.parent), path=str(as_pathlib.name))
@@ -60,12 +60,12 @@ def donation(donating_user_id: int):
     return redirect(url_for('.donations'))
 
 
-@homepage.route('/request-donation', methods=['POST'])
-def request_donation():
-    user_id = api_utils.extract_from_form(request, 'user_id')
-    if not SessionHelper.is_user_logged_in(user_id=user_id):
-        raise app_errors.InvalidAPIUsage('Cannot request donation, user not logged-in',  payload={'user_id': user_id})
+@homepage.route('/request-donation/<requesting_user_id>', methods=['POST'])
+def request_donation(requesting_user_id: int):
+    # requesting_user_id = api_utils.extract_from_args(request, 'requesting_user_id') # TODO:Alon delete if not using
+    if not SessionHelper.is_user_logged_in(user_id=requesting_user_id):
+        raise app_errors.InvalidAPIUsage('Cannot request donation, user not logged-in',  payload={'user_id': requesting_user_id})
 
     donation_id = api_utils.extract_from_form(request, 'donation_id')
-    success = UserDonationAssignment.assign_donation_to_user(user_id=user_id, donation_id=donation_id)
+    success = UserDonationAssignment.assign_donation_to_user(user_id=requesting_user_id, donation_id=donation_id)
     return jsonify({'request_donation_successfully': success})

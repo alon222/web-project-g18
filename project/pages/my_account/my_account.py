@@ -7,17 +7,17 @@ from project.utilities.donations_management import DonationsManagement
 from project.utilities.session_helper import SessionHelper
 
 # my_account blueprint definition
-my_account = Blueprint('my_account', __name__, url_prefix='/my-account', static_folder='static', static_url_path='/my-account', template_folder='templates')
+my_account = Blueprint('my_account', __name__, static_folder='static', static_url_path='/my-account', template_folder='templates')
 
 
 # Routes
-@my_account.route('/')
+@my_account.route('/my-account/')
 def index():
     return render_template('my_account.html')
 
 
 
-@my_account.route('/donations')
+@my_account.route('/my-account/donations')
 def donations():
     user_id = api_utils.extract_from_args(request, 'user_id')
     if not SessionHelper.is_user_logged_in(user_id=user_id):
@@ -27,7 +27,7 @@ def donations():
     return jsonify([d.serialize() for d in user_donations])
 
 
-@my_account.route('/donation', methods=['POST'])
+@my_account.route('/my-account/donation', methods=['POST'])
 def donation():
     user_id = api_utils.extract_from_args(request, 'user_id')
     if not SessionHelper.is_user_logged_in(user_id=user_id):

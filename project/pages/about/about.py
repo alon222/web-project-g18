@@ -28,7 +28,15 @@ def register():
     if not registered:
         raise app_errors.InvalidAPIUsage('Failed registering user', status_code=http.HTTPStatus.CONFLICT, payload={'email': email})
 
-    return redirect(url_for('about.login', email=email, password=password), code=http.HTTPStatus.TEMPORARY_REDIRECT)  # TODO: check this works
+
+    # TODO:Alon if the redirect doesnt work uncomment this part else delete this
+    # user = UsersManagement.authenticate_user(email=email, password=password)
+    # if user is None:
+    #     raise app_errors.InvalidAPIUsage('User credentials incorrect', status_code=http.HTTPStatus.UNAUTHORIZED, payload={'email': email})
+    #
+    # SessionHelper.login_user(user)
+
+    return redirect(url_for('.login', email=email, password=password), code=http.HTTPStatus.TEMPORARY_REDIRECT)  # TODO:Alon check this works
 
 
 @about.route('/login', methods=['POST'])

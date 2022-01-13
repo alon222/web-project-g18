@@ -30,5 +30,5 @@ def edit_account():
         password = api_utils.extract_from_form(request, 'password')
         phone_number = api_utils.extract_from_form(request, 'phone_number')
         UsersManagement.update_user_info(user_id=user_id, username=username, password=password, phone_number=phone_number, email=email)
-        return redirect(url_for('about.login', email=email, password=password), code=http.HTTPStatus.TEMPORARY_REDIRECT)  # TODO: check this works
+        return redirect(url_for('about.login', email=email, password=password), code=http.HTTPStatus.TEMPORARY_REDIRECT)  # TODO:Alon check this works
 
