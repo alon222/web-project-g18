@@ -1,10 +1,13 @@
-import pathlib
+import os
+import pathlib,http
 import uuid
 
 from flask import jsonify, session, Blueprint, render_template, redirect, url_for,request
 
 # homepage blueprint definition
+import app_errors
 import settings
+from app import app
 from utilities import api_utils, datetime_utils
 from utilities.donations_management import DonationsManagement
 from utilities.donations_management.donation import DonationAvailabilityStatus
@@ -36,8 +39,6 @@ def redirect_homepage():
 
 @homepage.route('/donation', methods=['POST'])
 def donation():
-    # if not SessionHelper.is_user_logged_in(user_id=donating_user_id):
-    #     raise app_errors.InvalidAPIUsage('Cannot add donation, user not logged-in',  payload={'user_id': donating_user_id})
     user = session['user']
     donating_user_id = user['user_id']
     category_str = api_utils.extract_from_form(request, 'category')
@@ -51,8 +52,11 @@ def donation():
     city = api_utils.extract_from_form(request, 'city')
     #pass adress as string
     address = "{} {}, {}".format(street, number, city)
-    donation_image = api_utils.extract_from_form(request, 'donation_image')
-    print(donation_image)
+    # donation_image = api_utils.extract_from_form(request, 'donation_image')
+    if request.files:
+        image=request.files['donation_image']
+        image.save(os.path.join(settings.UPLOAD_FOLDER, image.filename))
+        donation_image=image.filename
     #filename = pathlib.Path(donation_image.filename)
     # # if filename == '' or filename.suffix not in {'png', 'jpg', 'jpeg'}:
     # #     raise app_errors.InvalidAPIUsage('Donation image is invalid', payload={'filename': filename})
@@ -61,14 +65,11 @@ def donation():
     #donation_image.save(donation_file_path)
 
     DonationsManagement.add_donation(category_str=category_str, description=description, available_until_str=available_until_str, address=address,donating_user_id=donating_user_id, donation_image_path=str(donation_image))
-    return redirect(url_for('.donations'))
+    return redirect('/')
 
 
 @homepage.route('/request-donation', methods=['POST','get'])
 def request_donation():
-    # requesting_user_id = api_utils.extract_from_args(request, 'requesting_user_id') # TODO:Alon delete if not using
-    # if not SessionHelper.is_user_logged_in(user_id=requesting_user_id):
-    #     raise app_errors.InvalidAPIUsage('Cannot request donation, user not logged-in',  payload={'user_id': requesting_user_id})
     user = session['user']
     requesting_user_id = user['user_id']
     user_name = user['username']
@@ -87,12 +88,12 @@ def register():
     password = api_utils.extract_from_form(request, 'password_signup')
 
     registered = UsersManagement.register_user(username=username, password=password, phone_number=phone_number, email=email)
-    # if not registered:
-    #     raise app_errors.InvalidAPIUsage('Failed registering user', status_code=http.HTTPStatus.CONFLICT, payload={'email': email})
+    if not registered:
+        raise app_errors.InvalidAPIUsage('Failed registering user', status_code=http.HTTPStatus.CONFLICT, payload={'email': email})
     user = UsersManagement.authenticate_user(email=email, password=password)
-    # if user is None:
-    #     raise app_errors.InvalidAPIUsage('User credentials incorrect', status_code=http.HTTPStatus.UNAUTHORIZED, payload={'email': email})
-    #
+    if user is None:
+        raise app_errors.InvalidAPIUsage('User credentials incorrect', status_code=http.HTTPStatus.UNAUTHORIZED, payload={'email': email})
+
     SessionHelper.login_user(user)
     return redirect('/')
 
@@ -103,8 +104,8 @@ def login():
     password = api_utils.extract_from_form(request, 'password')
 
     user = UsersManagement.authenticate_user(email=email, password=password)
-    # if user is None:
-    #     raise app_errors.InvalidAPIUsage('User credentials incorrect', status_code=http.HTTPStatus.UNAUTHORIZED, payload={'email': email})
+    if user is None:
+        raise app_errors.InvalidAPIUsage('User credentials incorrect', status_code=http.HTTPStatus.UNAUTHORIZED, payload={'email': email})
 
     SessionHelper.login_user(user)
     return redirect('/')
@@ -112,9 +113,5 @@ def login():
 
 @homepage.route('/logout')##aproved
 def logout():
-    # user=session['user']
-    # user_id=str(user["user_id"])
-    # user_id = api_utils.extract_from_args(request, 'user_id')##check if we can fix session helpers
-    # SessionHelper.logout_user(user_id=user_id)
     session.clear()
     return redirect('/')

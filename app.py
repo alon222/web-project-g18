@@ -9,6 +9,7 @@ import http
 from flask import Blueprint, render_template, request, jsonify, url_for
 from werkzeug.utils import redirect
 
+from app_errors import AppError
 from utilities import api_utils
 from utilities.donations_management import DonationsManagement
 from utilities.session_helper import SessionHelper
@@ -47,6 +48,16 @@ app.register_blueprint(page_error_handlers)
 # ## Main menu
 from components.main_menu.main_menu import main_menu
 app.register_blueprint(main_menu)
+
+
+@app.errorhandler(AppError)
+def app_error(e: AppError):
+    return jsonify(e.to_dict()), e.status_code
+
+
+@app.errorhandler(Exception)
+def unhandled_error(e: Exception):
+    return jsonify(dict(error=e)), http.HTTPStatus.INTERNAL_SERVER_ERROR
 
 
 # #### project routes####

@@ -8,6 +8,7 @@
 }
 .hero{
   display: flex;
+  justify-content: center;
     max-width: 1400px;
     margin: auto;
 }
@@ -42,6 +43,7 @@
 .left-side-hero{
   margin-top: 25vh;
   width: 60%;
+  margin-left: 30px;
 }
 .right-side-hero{
 width: 40%;

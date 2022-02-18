@@ -4,7 +4,12 @@
 </div>
 <div class="page container">
    <h1>Hi, {{session['user'].username}} this is what you offer</h1>
+    {% if res[0] %}
+    {% else %}
+        <h2>Hi, {{session['user'].username}} you didn't donate anything maybe it's time to start?</h2>
+    {% endif %}
 </div>
+
 <div class="product-wraper">
  {% include 'donateditems.html' %}
 </div>

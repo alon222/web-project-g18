@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for,session
 
 # catalog blueprint definition
+import app_errors
 from utilities import api_utils
 from utilities.donations_management import DonationsManagement
 from utilities.session_helper import SessionHelper
+from utilities.user_donation_assignment import UserDonationAssignment
 from utilities.users_management import UsersManagement
 
 myaccount = Blueprint('myaccount', __name__, static_folder='static', static_url_path='/myaccount', template_folder='templates')
@@ -11,11 +13,11 @@ myaccount = Blueprint('myaccount', __name__, static_folder='static', static_url_
 @myaccount.route('/my-account')
 @myaccount.route('/myaccount')
 def donations():
+    if session.get('user') is None:
+        raise app_errors.InvalidAPIUsage('User not logged-in')
+
     user = session['user']
     user_id = user['user_id']
-    # if not SessionHelper.is_user_logged_in(user_id=user_id):
-    #     raise app_errors.InvalidAPIUsage('User not logged-in', payload={'user_id': user_id})
-
     user_donations = DonationsManagement.get_user_donations(user_id=user_id)
     donations = [d.serialize() for d in user_donations]
     return render_template('myaccount.html',res=donations)
@@ -27,17 +29,15 @@ def donations():
 def donation():
     user = session['user']
     user_id = user['user_id']
-    # if not SessionHelper.is_user_logged_in(user_id=user_id):
-    #     raise app_errors.InvalidAPIUsage('User not logged-in', payload={'user_id': user_id})
-
     donation_id = api_utils.extract_from_form(request, 'donation_id')
     http_method = api_utils.extract_from_form(request, '_method')
     if http_method == 'DELETE':
-        print(donation_id)
-        print(user_id)
         DonationsManagement.delete_donation(donation_id=donation_id, donating_user_id=user_id)
     elif http_method == 'PUT':
         availability_status = api_utils.extract_from_form(request, 'status')
+        if availability_status == 'AVAILABLE': ## remove assignment
+            print(donation_id)
+            UserDonationAssignment.delete_assign(donation_id=donation_id)
         DonationsManagement.update_donation(donation_id=donation_id, availability_status_str=availability_status)
 
     return redirect(url_for('.donations'))
@@ -47,10 +47,10 @@ def donation():
 @myaccount.route('/my-account/edit', methods=['GET', 'POST'])
 @myaccount.route('/myaccount/edit', methods=['GET', 'POST'])
 def edit_account():
-    user = session['user']
-    # if not SessionHelper.is_user_logged_in(user_id=user_id):
-    #     raise app_errors.InvalidAPIUsage('User not logged-in', payload={'user_id': user_id})
 
+    if session.get('user') is None:
+        raise app_errors.InvalidAPIUsage('User not logged-in')
+    user = session['user']
     if request.method == 'GET':
         return render_template('my-account-edit.html', user=user)
 

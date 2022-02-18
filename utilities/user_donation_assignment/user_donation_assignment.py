@@ -17,6 +17,8 @@ class UserDonationAssignment:
 
     _INSERT_ASSIGNMENT_SQL = "INSERT IGNORE INTO donation_assignment (requested_user, donation) VALUES (%s, %s)"
 
+    _DELETE_ASSIGNMENT_SQL = "DELETE FROM donation_assignment WHERE donation = %s"
+
     @classmethod
     def create_table(cls):
         result = dbManager.execute(cls._CREATE_TABLE_SQL)
@@ -34,6 +36,12 @@ class UserDonationAssignment:
             DonationsManagement.update_donation(donation_id=donation_id, availability_status_str=DonationAvailabilityStatus.RESERVED_FOR_USER.name)
 
         return was_assigned
+
+    @classmethod
+    def delete_assign(cls, donation_id: int):
+        rows_affected = dbManager.commit(cls._DELETE_ASSIGNMENT_SQL, args=(donation_id,))
+        if rows_affected == dbManager.ERROR_CODE:
+            raise app_errors.AppError('Failed deleting assignment', payload={'donation_id': donation_id})
 
     @classmethod
     def delete_table(cls):
