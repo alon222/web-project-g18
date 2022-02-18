@@ -1,0 +1,31 @@
+{% for item in res %}
+    <div class="posteditem">
+       <h1>{{ item.description }}</h1>
+       <h4>{{ item.category }}</h4>
+       <div class="buttonsleft">
+           {% if item.availability_status == "RESERVED_FOR_USER" %}
+               <form action="/my-account/donation" method="post">
+                   <input type="hidden" id="donation_id" name="donation_id" value="{{ item.donation_id }}">
+                   <input type="hidden" id="status" name="status" value="AVAILABLE">
+                   <input type="hidden" id="_method" name="_method" value="PUT">
+                   <button>Release Product</button>
+               </form>
+               <form action="/my-account/donation" method="post">
+                   <input type="hidden" id="donation_id" name="donation_id" value="{{ item.donation_id }}">
+                   <input type="hidden" id="status" name="status" value="DELIVERED">
+                   <input type="hidden" id="_method" name="_method" value="PUT">
+                   <button>Product shipped</button>
+               </form>
+           {% elif item.availability_status == "AVAILABLE" %}
+               <form action="/my-account/donation" method="post">
+                   <input type="hidden" id="donation_id" name="donation_id" value="{{ item.donation_id }}">
+                   <input type="hidden" id="_method" name="_method" value="DELETE">
+                   <button>Delete product</button>
+               </form>
+           {% else %}
+               <h1>This item is already delivered</h1>
+           {% endif %}
+       </div>
+    </div>
+{% endfor %}
+

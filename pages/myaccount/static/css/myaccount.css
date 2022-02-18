@@ -1,0 +1,102 @@
+/* my account page display products */
+
+.product-wraper{
+  max-width: 800px;
+  margin: auto;
+}
+
+
+.posteditem{
+  position: relative;
+  height: 100%;
+  background-color: #e7e7e7;
+  padding: 10px;
+  margin-top: 20px;
+}
+.posteditem h4{
+  padding: 5px 0px;
+  font-size: 15px;
+  color: black;
+  text-transform: lowercase
+}
+.posteditem h1{
+  padding: 5px 0px;
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+}
+.posteditem .buttonsleft{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+  padding-right: 10px;
+  display: flex;
+}
+.posteditem button{
+  padding: 15px 45px;
+  border-radius: 25px;
+  background-color: var(--mainColor);
+  font-size: 15px;
+  font-weight: 400;
+}
+.posteditem button:hover{
+  opacity: 0.7;
+}
+
+
+.product-wraper ul{
+  list-style-type: none;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+.page .product-wraper ul{
+  list-style-type: none;
+  margin-top: 20px;
+  background-color: var(--greyback);
+}
+.page .product-wraper ul li{
+  padding: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-bottom: 1px solid black;
+}
+
+.page .product-wraper ul li:nth-child(6){
+  border-bottom: none;
+}
+.page .product-wraper ul li i{
+  padding-right: 10px;
+  text-align: left;
+}
+
+/* responsive my account page display products */
+
+@media only screen and (max-width: 800px) {
+  .product-wraper{
+    margin: 15px;
+  }
+  .posteditem{
+    padding: 30px 10px;
+  }
+  .posteditem .buttonsleft{
+    display: flex;
+    flex-direction: column;
+  }
+  .posteditem button{
+    margin-bottom: 5px;
+    padding: 10px 30px;
+  }
+  .page p{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .posteditem button{
+    padding: 10px 20px;
+  }
+}

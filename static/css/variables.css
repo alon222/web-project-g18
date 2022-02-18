@@ -1,0 +1,10 @@
+:root{
+  --mainColor: orange;
+  --greyback: #e7e7e7;
+    --background:  #d6efc7;
+  --button: linear-gradient(to right, #f7bc3d, #f5ab0c);
+  --input: white;
+  --label: #aaaaaa;
+  --tab: #6a6f8c;
+  --input_text: black;
+}

@@ -1,0 +1,124 @@
+@import "variables.css";
+
+/* pages styles to keep the project organized */
+
+*{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+*,:after,:before{box-sizing:border-box}
+.container{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+/* styles for defult pages */
+ .page h1{
+  text-align: center;
+  font-weight: 600;
+  color: var(--mainColor);
+  font-size: 40px;
+  margin-top: 50px;
+}
+.page h2{
+  text-align: center;
+  font-weight: 600;
+  color: var(--mainColor);
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+.page p{
+  text-align: center;
+  margin: 40px;
+  margin-left: 200px;
+  margin-right: 200px;
+  font-size: 18px;
+  font-weight: 400;
+}
+/* about page divider */
+.divider{
+  margin: 0px;
+  border-bottom: 20px solid var(--mainColor);
+  opacity: 0.5;
+}
+
+
+ /* edit account button styles */
+.editsec{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+  color: var(--mainColor);
+  align-items: center;
+}
+.editsec h2{
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.editsec button{
+  padding: 10px 25px;
+  border-radius: 25px;
+  background-color: var(--mainColor);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* add item button styles */
+
+.additem{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  left: 2%;
+  bottom: 5%;
+}
+.additem button{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border: none;
+}
+.additem i{
+  font-size: 40px;
+  color: var(--mainColor);
+}
+
+/* add item hover transitions */
+.additem:hover{
+  width: 100px;
+  height: 100px;
+  transition: all .4s ease;
+-webkit-transition: all .4s ease;
+}
+.additem:hover i{
+  font-size: 55px;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+/* responsive container */
+@media only screen and (max-width: 400px) {
+  .container{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+
+
+
+
