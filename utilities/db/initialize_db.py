@@ -22,32 +22,36 @@ predefined_user_details = [
 available_until = datetime.datetime.now() + datetime.timedelta(hours=50)
 predefined_donations = [
     {
-        "category": DonationCategory.FRUITS.name,
-        "description": "2 kilos of banana",
+        "category": DonationCategory.VEGETABLES.name,
+        "description": "2 kilos of Tomato",
         "available_until": datetime_utils.convert_datetime_to_timestamp(available_until),
         "address": "some street",
-        "donating_user_email": "yaniv@gmail.com"
+        "donating_user_email": "yaniv@gmail.com",
+        "donation_image_path":"tomato.jpeg"
     },
     {
-        "category": DonationCategory.FRUITS.name,
-        "description": "2 kilos of banana",
+        "category": DonationCategory.GRAINS.name,
+        "description": "2 kilos of grains",
         "available_until": datetime_utils.convert_datetime_to_timestamp(available_until),
         "address": "some street",
-        "donating_user_email": "yaniv@gmail.com"
+        "donating_user_email": "yaniv@gmail.com",
+        "donation_image_path":"grains.jpg"
     },
     {
-        "category": DonationCategory.FRUITS.name,
-        "description": "2 kilos of banana",
+        "category": DonationCategory.FURNITURE.name,
+        "description": "2 tables",
         "available_until": datetime_utils.convert_datetime_to_timestamp(available_until),
         "address": "some street",
-        "donating_user_email": "yaniv@gmail.com"
+        "donating_user_email": "yaniv@gmail.com",
+        "donation_image_path":"table.webp"
     },
     {
-        "category": DonationCategory.FRUITS.name,
-        "description": "2 kilos of banana",
+        "category": DonationCategory.CLOTHS.name,
+        "description": "2 T-shirts",
         "available_until": datetime_utils.convert_datetime_to_timestamp(available_until),
         "address": "some street",
-        "donating_user_email": "yaniv@gmail.com"
+        "donating_user_email": "yaniv@gmail.com",
+        "donation_image_path":"tshirt.jpg"
     },
 ]
 
@@ -56,7 +60,7 @@ predefined_donations = [
 def populate_donations():
     users = UsersManagement.get_users_from_email([d['donating_user_email'] for d in predefined_donations])
     user_id_by_email = {u.email: u.user_id for u in users}
-    donation_image_path = pathlib.Path('tomato.jpeg')
+    # donation_image_path = pathlib.Path('tomato.jpeg')
 
     for donation_details in predefined_donations:
         user_id = user_id_by_email[donation_details['donating_user_email']]
@@ -66,7 +70,7 @@ def populate_donations():
             available_until_str=donation_details['available_until'],
             address=donation_details['address'],
             donating_user_id=user_id,
-            donation_image_path=str(donation_image_path)
+            donation_image_path=donation_details['donation_image_path']
         )
 
 
