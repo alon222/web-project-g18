@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% set active_page = "my-account" %}
+
+{% set page_head_title = 'My-Account' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('myaccount.static', filename='css/myaccount.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    {% include 'my-account-page.html' %}
+{% endblock %}

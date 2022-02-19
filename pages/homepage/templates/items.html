@@ -1,0 +1,44 @@
+{% for item in res %}
+    <div class="item">
+       <div class="cardContainer inactive">
+          <div class="card">
+             <div class="side front">
+                <div class="img">
+                    <img src="{{url_for('static', filename='uploaded_donation_images/%s' % item.donation_image_path)}}">
+                </div>
+                <div class="info">
+                   <h2>{{ item.category }}</h2>
+                   <p>{{ item.description }}</p>
+                </div>
+             </div>
+             <div class="side back">
+                <div class="info">
+                   <h2>{{ item.category }}</h2>
+                   <h3>{{ item.description }}</h3>
+                   <ul>
+                      <li><i class="far fa-clock"></i>Until:  {{ item.available_until}}</li>
+                      <li><i class="fas fa-barcode"></i>  {{ item.category }}</li>
+                      <li><i class="fas fa-map-marked-alt"></i>  {{ item.address }}</li>
+                   </ul>
+                   <h5>*Order to get donor details for coordination</h5>
+                    {% if session['user'] %}
+                        <form action="/request-donation">
+                            <input type="hidden" id="donation_id" name="donation_id" value={{ item.donation_id}}>
+                            <button class="btn">
+                                <h4>Request this product</h4>
+                                <svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+                                    <path d="M0-.25h24v24H0z" fill="none"/>
+                                 </svg>
+                            </button>
+                        </form>
+                    {% else %}
+                        <button class="btn" onclick="openModal()">Must SignIn</button>
+                    {% endif %}
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+{% endfor %}
+

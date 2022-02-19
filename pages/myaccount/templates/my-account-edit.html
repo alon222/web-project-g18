@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% set active_page = "my-account" %}
+
+{% set page_head_title = 'My-Account Edit' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/additem.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    {% include 'my-account-edit-page.html' %}
+{% endblock %}
+{% block page_body_js %}
+{#    empty in order not to load the js file#}
+{% endblock %}

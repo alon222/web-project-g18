@@ -1,0 +1,35 @@
+<div class="page">
+   <h1>Contact As</h1>
+    <h1 style="color: red"> {{ res }}</h1>
+</div>
+<form action="/contact" method="post">
+   <div class="form-wrap">
+      <!-- contact form -->
+      <div class="form-html">
+         <div class="form-form">
+            <div class="sign-in-htm">
+               <div class="group">
+                  <label for="email" class="label">Your email address</label>
+                  <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required>
+{#                  <span id = "email_mes" class="messages"></span>#}
+               </div>
+               <div class="group">
+                  <label for="subject" class="label">Subject</label>
+                  <input id="subject" name="subject" type="text" class="input" required>
+{#                  <span id = "subject_mes" class="messages"></span>#}
+               </div>
+               <div class="group">
+                  <label for="message" class="label">Description</label>
+                  <textarea id="message" name="message" cols ="30" rows="10" class="input" required></textarea>
+{#                  <span id = "description_mes" class="messages"> </span> <br><br>#}
+                  <h3>Please enter the details of your request.</h3>
+                  <h3>A member of our support staff will respond as soon as possible.</h3>
+               </div>
+               <div class="group">
+                  <input type="submit" class="button" value="Submit" style= "color: white; font-weight: bold; font-size: 15px;" >
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</form>

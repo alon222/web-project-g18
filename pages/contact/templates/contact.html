@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% set active_page = "contact" %}
+{% set page_head_title = 'Contact-Us' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/additem.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+     {% include 'contactpage.html' %}
+{% endblock %}
+{% block page_body_js %}
+    <script src="{{ url_for('static', filename='js/signin.js') }}"></script>
+{% endblock %}
+

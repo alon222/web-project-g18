@@ -1,0 +1,39 @@
+<div class="page">
+   <h1>Edit Your Account</h1>
+</div>
+<div class="form-wrap">
+   <div class="form-html">
+      <div class="form-form">
+         <form action="/my-account/edit" method="post">
+            <div class="group">
+               <label for="edit_username" class="label">Username</label>
+               <input id="edit_username" name="edit_username" type="text" class="input" required value="{{ user.username }}">
+               <span id = "username_mes" class="messages"></span>
+            </div>
+            <div class="group">
+               <label for="edit_email" class="label">Email Address</label>
+               <input id="edit_email" name="edit_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input" required value="{{ user.email }}">
+               <span id = "email_mes" class="messages"></span>
+            </div>
+            <div class="group">
+               <label for="edit_phone_number" class="label">Phone Number</label>
+               <input id="edit_phone_number" name="edit_phone_number" type="tel" pattern="[0][5][0-9]{1}[0-9]{3}[0-9]{4}" class="input" required value="{{ user.phone_number }}">
+               <span id = "phone_mes" class="messages" ></span>
+            </div>
+            <div class="group">
+               <label for="edit_password" class="label">Password</label>
+               <input id="edit_password" name="edit_password" type="password" minlength="8" maxlength="15" class="input">
+            </div>
+            <div class="group">
+               <span id = "password_mes" class="messages"></span>
+               <label for="re_password" class="label">Confirm Password</label>
+               <input id="re_password" name="re_password" type="password" minlength="8" maxlength="15"  class="input" >
+               <span id = "repass_mes" class="messages"> </span>
+            </div>
+            <div class="group">
+               <input type="submit" class="button" value="Update" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_signup()">
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

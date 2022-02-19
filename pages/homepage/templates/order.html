@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% set active_page = "/" %}
+{% set page_head_title = 'Order Summary' %}
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('myaccount.static', filename='css/myaccount.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+    {% if res.category=='DAIRY' or res.category=='VEGETABLES' or res.category=='GRAINS'%}
+        {% set Category='Food' %}
+    {% else %}
+        {% set Category=Other %}
+    {% endif %}
+    <div class="page container">
+       <h1>Hi, {{ user_name }} this is Order Summery</h1>
+       <div class="product-wraper">
+          <ul>
+             <li><i class="fas fa-barcode"></i>   Category: {{ Category }}</li>
+             <li><i class="fas fa-info"></i>   Sub Category: {{ res.category }}</li>
+             <li><i class="fas fa-shopping-cart"></i>    Product: {{ res.description }}</li>
+             <li><i class="far fa-clock"></i>   Until: {{ res.available_until }}</li>
+             <li><i class="fas fa-map-marked-alt"></i>   Address: {{ res.address }}</li>
+             <li><i class="fas fa-phone"></i>   Tel: {{ phone }}</li>
+          </ul>
+       </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,69 @@
+<div class="additem">
+   <button onclick="{{ 'additem()' if session['user'] else 'openModal()' }}">
+   <i class="fas fa-plus"></i>
+   </button>
+</div>
+<div class="additem-wrap" id="additem">
+   <div class="additem-html">
+      <i class="far fa-times-circle" onclick="closeadditem()"></i>
+      <label for="tab-1" class="tab">New donation</label>
+      <div class="form-form">
+         <div class="sign-in-htm">
+            <form action="/donation" method="post" enctype="multipart/form-data">
+               <div class="group">
+                  <label for="category" class="label">Category</label>
+                  <select id="category" name="category" class="input" required>
+                     <option value="">Please choose a category</option>
+                     <optgroup label="Food">
+                        <option value="fruits">Fruits</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="grains">Grains</option>
+                        <option value="dairy">Dairy</option>
+                     </optgroup>
+                     <option value="clothes">Clothes</option>
+                     <option value="furniture">Furniture</option>
+                     <option value="other">Other</option>
+                  </select>
+                  <span id = "category_mes" class="messages"></span>
+               </div>
+               <div class="group">
+                  <label for="product" class="label">What would you like to donate?</label>
+                  <input id="product" name="product" type="text" class="input" required >
+                  <span id = "product_mes" class="messages"></span>
+               </div>
+               <div class="group">
+                  <label for="avail" class="label">Until when available?</label>
+                  <input id="avail_date" name="avail_date" type="date" class="input" required>
+                  <input id="avail_time" name="avail_time" type="time" class="input" required>
+                  <span id = "avail_mes" class="messages" ></span>
+               </div>
+               <div class="group">
+                  <div class="address" style="display:table;">
+                     <div class="cell" style="display: table-cell;";>
+                        <label for="street" class="label">Street</label>
+                        <input id="street" name="street" type="text" class="input" required size="48%">
+                     </div>
+                     <div class="cell" style="display: table-cell;";>
+                        <label for="number" class="label">Number</label>
+                        <input id="number" name="number" type="number" class="input" required size="4%" min="0">
+                     </div>
+                     <div class="cell" style="display: table-cell;";>
+                        <label for="city" class="label">City</label>
+                        <input id="city" name="city" type="text" class="input" required size="48%">
+                     </div>
+                  </div>
+                  <span id = "address_mes" class="messages"></span>
+               </div>
+               <div class="group">
+                  <label for="donation_image" class="label">Attachments</label>
+                  <input id="donation_image" name="donation_image" type="file" class="input" required value="">
+                  <span id = "donation_image_mes" class="messages"> </span>
+               </div>
+               <div class="group">
+                  <input type="submit" class="button" value="Confirm" style= "color: white; font-weight: bold; font-size: 15px;" onclick="return varify_donation()">
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>

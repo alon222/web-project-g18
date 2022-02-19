@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main-menu.css') }}"/>
+<header>
+    <nav>
+        <div class="topnav" id="myTopnav">
+            <div class="logo"><a href="/">Trom<span>Oti</span></a></div>
+            <a href="/contact"  class="{{ 'active' if active_page == 'contact' else '' }}">ContactUs</a>
+            <a href="/about"  class="{{ 'active' if active_page == 'about' else '' }}" >About</a>
+            {% if session['user'] %}
+                <a href="/logout" >logout</a>
+                <a href="/my-account" class="{{ 'active' if active_page == 'my-account' else '' }}">My Account</a>
+            {% else %}
+                <a onclick="openModal()">SignUp</a>
+            {% endif %}
+            <a href="/" class="{{ 'active' if active_page == '/' else '' }}">Home</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+        </div>
+    </nav>
+</header>

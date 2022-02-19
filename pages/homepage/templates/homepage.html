@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% set active_page = "/" %}
+{% set page_head_title = 'Home Page' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/additem.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+    <div class="hero container">
+       <div class="left-side-hero">
+          <h1>Donating has never been easier</h1>
+          <button onclick="{{ 'additem()' if session['user'] else 'openModal()' }}">JOIN Trom<span>Oti</span></button>
+          <p>Your new donation is here
+             If you’re a non profit,  this is the place for you!
+          </p>
+       </div>
+       <div class="right-side-hero">
+          <img src="{{ url_for('homepage.static', filename='media/hero.png') }}" alt="this is picture of donation">
+       </div>
+    </div>
+    <h1 id="title">Check out our list of donation items</h1>
+    <!--  products  slider-->
+    <div class="container">
+       <h2>Available Products</h2>
+       <div class="slider">
+          <div class="wrapper" id="wrapper1">
+              {% include 'items.html' %}
+          </div>
+       </div>
+    </div>
+    {% include 'additem.html' %}
+{% endblock %}
+{% block page_body_js %}
+    <script src="{{ url_for('homepage.static', filename='js/homepage.js') }}"></script>
+    {{ super() }}
+{% endblock %}

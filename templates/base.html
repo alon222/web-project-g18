@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+ <html lang="{{ page_lang|default("en", true) }}">
+    <head>
+    {% block page_head %}
+        {# Title #}
+        {# Meta tags #}
+        {% block page_head_meta %}
+            <base href="/"/>
+            <meta charset="UTF-8"/>
+            <meta name="author" content="Barak Pinchovski"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="Flask skeleton project as a base to start developing on"/>
+            <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
+            {% block page_head_meta_extra %}{% endblock %}
+        {% endblock %}
+        <title>{{ page_head_title }}</title>
+        {# favicon #}
+        <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/flask-favicon.png') }}"/>
+        {# Base #}
+        <base href="/"/>
+        {# CSS #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"/>
+
+        {# Icon CDN #}
+        <script src="https://kit.fontawesome.com/61f659ea71.js" crossorigin="anonymous"></script> <!-- icon cdn -->
+
+        {% block page_head_css %}
+        {% endblock %}
+    {% endblock %}
+    </head>
+    <body>
+        {% block page_body_content %}
+
+            {# Header #}
+            {% block page_body_header %}
+                {% include 'main_menu.html' %}
+            {% endblock %}
+
+            {# Main #}
+            {% block page_body_main %}
+                <main class="page-main">
+                  {% block page_body_main_content %}
+                  {% endblock %}
+                </main>
+            {% endblock %}
+
+            {# Footer #}
+            {% block page_body_footer %}
+                {# both apear on every page that why they are in the base #}
+                {% include 'signin.html' %}
+                {% include 'footer.html' %}
+            {% endblock %}
+
+        {% endblock %}
+
+        {# JS #}
+        <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+        {% block page_body_js %}
+            <script src="{{ url_for('static', filename='js/signin.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

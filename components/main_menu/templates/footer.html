@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/footer.css') }}"/>
+<footer>
+        <div class="footer-content">
+            <div class="logo">Trom<span>Oti</span></div>
+            <p>
+                TromOti is an app that serves as a dedicated platform for donations to the needy. The app serves as an interface
+                Which connects the various associations or individuals and the donating business owners, in a simple and effective way so
+                Minimal effort will be required from donors.
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy; <a href="#">TromOti</a>  </p>
+            <div class="footer-menu">
+                <ul class="f-menu">
+                    <li><a href="/" >Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    {% if session['user'] %}
+                        <li><a href="/my-account">My Account</a></li>
+                    {% else %}
+                        <li><a onclick="openModal()">SignUp</a></li>
+                    {% endif %}
+                    <li><a href="/contact">ContactUs</a></li>
+                </ul>
+            </div>
+        </div>
+</footer>
