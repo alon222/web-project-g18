@@ -19,6 +19,7 @@ class UsersManagement:
     _DELETE_USER_SQL = "DELETE FROM users WHERE id = %s; "
     _UPDATE_USER_SQL = """UPDATE users SET username = %s , email = %s, phone_number = %s , password = %s WHERE id = %s; """
     _UPDATE_USER_SQL_without = """UPDATE users SET username = %s , email = %s, phone_number = %s WHERE id = %s; """
+    _GET_USERS_BY_USERID = """SELECT * FROM users WHERE id = %s;"""
 
     @classmethod
     def create_table(cls):
@@ -118,3 +119,10 @@ class UsersManagement:
             raise app_errors.AppError('Failed updating user info', payload={'user_id': user_id})
 
 
+    @classmethod
+    def get_user_by_id(cls, user_id: int):
+        raw_user_details = dbManager.fetch(cls._GET_USERS_BY_USERID, (user_id, ))
+        users = cls._get_users_from_raw_details(raw_user_details)
+        if len(users) == 0:
+            raise app_errors.AppError('donating user not found')
+        return users[0]

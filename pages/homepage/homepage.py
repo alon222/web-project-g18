@@ -76,7 +76,10 @@ def request_donation():
     donation_id = api_utils.extract_from_args(request, 'donation_id')
     res = DonationsManagement.get_donation(donation_id)
     UserDonationAssignment.assign_donation_to_user(user_id=requesting_user_id, donation_id=donation_id)
-    return render_template('order.html', res=res.serialize(), user_name=user_name)
+    res = res.serialize()
+    donating_user = UsersManagement.get_user_by_id(res['donating_user_id'])
+    donating_user = donating_user.serialize()
+    return render_template('order.html', res=res, user_name=user_name, phone=donating_user['phone_number'])
 
 ##### this is authantication section#######
 

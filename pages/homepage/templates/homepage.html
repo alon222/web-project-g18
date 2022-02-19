@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% set active_page = "/" %}
+{% set page_head_title = 'Home Page' %}
 {% block page_head_css %}
     <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/additem.css') }}"/>
@@ -18,9 +19,9 @@
        </div>
     </div>
     <h1 id="title">Check out our list of donation items</h1>
-    <!--  products template slider-->
+    <!--  products  slider-->
     <div class="container">
-       <h2>Food Products</h2>
+       <h2>Available Products</h2>
        <div class="slider">
           <div class="wrapper" id="wrapper1">
               {% include 'items.html' %}

@@ -13,7 +13,7 @@
             <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
             {% block page_head_meta_extra %}{% endblock %}
         {% endblock %}
-
+        <title>{{ page_head_title }}</title>
         {# favicon #}
         <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/flask-favicon.png') }}"/>
         {# Base #}
