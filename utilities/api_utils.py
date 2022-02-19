@@ -19,4 +19,8 @@ def extract_from_files(request, name):
         raise app_errors.InvalidAPIUsage(f"{name} not provided")
     return file
 
+#check if file is picture
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
 

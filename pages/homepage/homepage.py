@@ -9,6 +9,7 @@ import app_errors
 import settings
 from app import app
 from utilities import api_utils, datetime_utils
+from utilities.api_utils import allowed_file
 from utilities.donations_management import DonationsManagement
 from utilities.donations_management.donation import DonationAvailabilityStatus
 from utilities.session_helper import SessionHelper
@@ -55,14 +56,11 @@ def donation():
     # donation_image = api_utils.extract_from_form(request, 'donation_image')
     if request.files:
         image=request.files['donation_image']
-        image.save(os.path.join(settings.UPLOAD_FOLDER, image.filename))
-        donation_image=image.filename
-    #filename = pathlib.Path(donation_image.filename)
-    # # if filename == '' or filename.suffix not in {'png', 'jpg', 'jpeg'}:
-    # #     raise app_errors.InvalidAPIUsage('Donation image is invalid', payload={'filename': filename})
-    #
-    #donation_file_path = pathlib.Path(settings.UPLOAD_FOLDER, f"{uuid.uuid4()}_donation_{category_str}").with_suffix(filename.suffix)
-    #donation_image.save(donation_file_path)
+        if allowed_file(image.filename):
+            image.save(os.path.join(settings.UPLOAD_FOLDER, image.filename))
+            donation_image=image.filename
+        else:
+            raise app_errors.InvalidAPIUsage('Donation image is invalid', payload={'filename': image.filename})
 
     DonationsManagement.add_donation(category_str=category_str, description=description, available_until_str=available_until_str, address=address,donating_user_id=donating_user_id, donation_image_path=str(donation_image))
     return redirect('/')

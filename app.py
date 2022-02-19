@@ -1,20 +1,15 @@
-import sys
 
-from flask import Flask, session
+from flask import Flask
 import settings
 
 #############
 import http
 
-from flask import Blueprint, render_template, request, jsonify, url_for
-from werkzeug.utils import redirect
+from flask import  jsonify, url_for
+
 
 from app_errors import AppError
-from utilities import api_utils
-from utilities.donations_management import DonationsManagement
-from utilities.session_helper import SessionHelper
-from utilities.user_donation_assignment import UserDonationAssignment
-from utilities.users_management import UsersManagement
+
 
 ###### App setup
 
